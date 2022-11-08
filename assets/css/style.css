@@ -1,0 +1,48 @@
+.mainhead {
+  background-color: #f8f9fa;
+  padding-top: 9.5rem;
+  padding-bottom: 5rem;
+}
+
+#mainNav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #fff;
+}
+
+h1 {
+  font-weight: 600;
+  line-height: 1.2;
+  font-family: "Newsreader";
+}
+
+p {
+  font-family: "Mulish";
+}
+
+.youcode-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.navbar-title {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.navbar-title:hover {
+  color: rgba(95, 37, 219, 0.9);
+}
+
+.nav-item {
+  font-size: 1rem;
+}
+
+.foot-item {
+  text-decoration: none;
+}
