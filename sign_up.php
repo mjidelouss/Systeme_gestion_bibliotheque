@@ -1,3 +1,7 @@
+<?php
+include 'scripts.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,52 +31,39 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-              <form class="mx-1 mx-md-4">
+              <form class="mx-1 mx-md-4" action="scripts.php" method="POST">
               <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #a2d2ff;"></i>
                     <span class="h1 fw-bold mb-0">YouCode</span>
                   </div>
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
-  <label class="form-label" for="form3Example1c">Your Name</label>
-    <input type="text" id="form3Example1c" class="form-control" />
+  <label class="form-label">Username</label>
+    <input type="text" id="username" name="username" class="form-control" />
   </div>
 </div>
-
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
-  <label class="form-label" for="form3Example3c">Your Email</label>
-    <input type="email" id="form3Example3c" class="form-control" />
+  <label class="form-label">Email</label>
+    <input type="email" id="email" name="email" class="form-control" />
   </div>
 </div>
-
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
-  <label class="form-label" for="form3Example4c">Password</label>
-    <input type="password" id="form3Example4c" class="form-control" />
+  <label class="form-label">Password</label>
+    <input type="password" id="pasword" name="pasword" class="form-control" />
   </div>
 </div>
-
-<div class="d-flex flex-row align-items-center mb-4">
-  <div class="form-outline flex-fill mb-0">
-  <label class="form-label" for="form3Example4cd">Repeat your password</label>
-    <input type="password" id="form3Example4cd" class="form-control" />
-  </div>
-</div>
-
 <div class="form-check d-flex justify-content-center mb-5">
-  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
-  <label class="form-check-label" for="form2Example3">
-    I agree all statements in <a href="#!">Terms of service</a>
+  <input class="form-check-input me-2" type="checkbox" value="" id="checkTerms"/>
+  <label class="form-check-label">
+    I agree all statements in <a href="#">Terms of service</a>
   </label>
 </div>
-
 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-  <button type="button" class="btn btn-primary btn-lg">Register</button>
+  <button type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
 </div>
-
 </form>
-
               </div>
             </div>
           </div>
@@ -83,9 +74,6 @@
 </section>
 </body>
     <!-- ================== BEGIN core-js ================== -->
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/app.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="scripts.js"></script>
     <!-- ================== END core-js ================== -->
 </html>

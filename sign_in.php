@@ -1,3 +1,7 @@
+<?php
+include 'scripts.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,7 +31,7 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
+                <form action="scripts.php" method="POST">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #a2d2ff;"></i>
@@ -37,24 +41,24 @@
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                  <label class="form-label" for="form2Example17">Username</label>
-                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                  <label class="form-label">Username</label>
+                    <input type="text" id="log_username" name="log_username" class="form-control form-control-lg" />
                   </div>
 
                   <div class="form-outline mb-4">
-                  <label class="form-label" for="form2Example27">Password</label>
-                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                  <label class="form-label">Password</label>
+                    <input type="password" id="log_pass" name="log_pass" class="form-control form-control-lg" />
                   </div>
 
                   <div class="pt-1 mb-4">
-                    <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                    <button class="btn btn-dark btn-lg btn-block" name ="login" type="submit">Login</button>
                   </div>
 
-                  <a class="small text-muted" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
+                  <a class="small text-muted" href="#">Forgot password?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="./sign_up.php"
                       style="color: #393f81;">Register here</a></p>
-                  <a href="#!" class="small text-muted">Terms of use</a>
-                  <a href="#!" class="small text-muted">Privacy policy</a>
+                  <a href="#" class="small text-muted">Terms of use</a>
+                  <a href="#" class="small text-muted">Privacy policy</a>
                 </form>
 
               </div>
@@ -67,9 +71,6 @@
 </section>
 </body>
     <!-- ================== BEGIN core-js ================== -->
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/app.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="scripts.js"></script>
     <!-- ================== END core-js ================== -->
 </html>

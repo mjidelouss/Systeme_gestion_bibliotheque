@@ -165,13 +165,12 @@ $row = $res->fetch_assoc();
           <div
             class="modal-header"
             style="
-              background-image: linear-gradient(#429acd, #8dd6f8);
               border: none;
             "
           >
-            <h5 class="modal-title text-black fs-2">Profile</h5>
+            <h5 class="modal-title text-primary fs-3" style="margin-left: 12rem;">Profile</h5>
           </div>
-          <div class="modal-body" style="background-color: #8dd6f8">
+          <div class="modal-body">
           <div class="" id="">
           <input type="text" id="profileId" name="profileId" value="<?= $row['id']; ?>" style="display: none">
               <label class="col-form-label text-black">Username</label>
@@ -225,7 +224,7 @@ $row = $res->fetch_assoc();
           </div>
           <div
             class="modal-footer"
-            style="background-color: #8dd6f8; border: none"
+            style="border: none"
           >
             <button
               type="button"
@@ -256,13 +255,12 @@ $row = $res->fetch_assoc();
           <div
             class="modal-header"
             style="
-              background-image: linear-gradient(#429acd, #8dd6f8);
               border: none;
             "
           >
-            <h5 class="modal-title text-black">ADD BOOK</h5>
+            <h5 class="modal-title text-primary fs-3" style="margin-left: 11rem;">ADD BOOK</h5>
           </div>
-          <div class="modal-body" style="background-color: #8dd6f8">
+          <div class="modal-body">
           <div class="" id="">
               <label class="col-form-label text-black">Titre</label>
               <input
@@ -329,7 +327,7 @@ $row = $res->fetch_assoc();
           </div>
           <div
             class="modal-footer"
-            style="background-color: #8dd6f8; border: none"
+            style="border: none"
           >
             <button
               type="button"
@@ -361,13 +359,12 @@ $row = $res->fetch_assoc();
           <div
             class="modal-header"
             style="
-              background-image: linear-gradient(#429acd, #8dd6f8);
               border: none;
             "
           >
-            <h5 class="modal-title text-black">Update Book</h5>
+            <h5 class="modal-title text-primary fs-3" style="margin-left: 11rem;">Update Book</h5>
           </div>
-          <div class="modal-body" style="background-color: #8dd6f8">
+          <div class="modal-body">
           <div class="" id="">
           <input type="text" id="bookId" name="bookId" style="display: none">
               <label class="col-form-label text-black">Titre</label>
@@ -435,7 +432,7 @@ $row = $res->fetch_assoc();
           </div>
           <div
             class="modal-footer"
-            style="background-color: #8dd6f8; border: none"
+            style="border: none"
           >
           <button
               type="button"
@@ -460,8 +457,5 @@ $row = $res->fetch_assoc();
 </body>
     <!-- ================== BEGIN core-js ================== -->
     <script src="scripts.js"></script>
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/js/app.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- ================== END core-js ================== -->
 </html>
