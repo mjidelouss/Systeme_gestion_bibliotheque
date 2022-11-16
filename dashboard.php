@@ -28,6 +28,10 @@ include 'scripts.php';
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="resetBookForm()" data-bs-toggle="modal" data-bs-target="#modal-book"><i
                         class="fas fa-add me-2"></i>Add Book</a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#modal-profile"><i
+                        class="fas fa-user me-2"></i>Profile</a>
+                <a href="./index.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-danger"><i
+                        class="fas fa-power-off me-2 text-danger"></i>Logout</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -36,30 +40,9 @@ include 'scripts.php';
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                    <i class="fas fa-align-left primary-text fs-4 me-3" style="color: black" onclick="wrapside()" id="controlPanel"></i>
                     <h2 class="fs-2 m-0">Dashboard</h2>
-                </div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle second-text fw-bold me-2" href="#" id="navbarDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i>admin
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="./index.html">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+                </div>   
             </nav>
 <!-- Welcome user Message -->
 <?php
@@ -112,7 +95,7 @@ echo '<h1 class="display-1 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                         <table class="table bg-white rounded shadow-sm  table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Id</th>
+                                    <th scope="col" width="50">Id</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Auteur</th>
                                     <th scope="col">Category</th>
@@ -456,6 +439,8 @@ $row = $res->fetch_assoc();
     </div>
 </body>
     <!-- ================== BEGIN core-js ================== -->
+    <script src="./assets/js/vendor.min.js"></script>
+    <script src="./assets/js/app.min.js"></script>
     <script src="scripts.js"></script>
     <!-- ================== END core-js ================== -->
 </html>

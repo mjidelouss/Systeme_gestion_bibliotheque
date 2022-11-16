@@ -5,8 +5,6 @@
 }
 
 #mainNav {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   background-color: #fff;
 }
 
@@ -28,10 +26,7 @@ p {
 }
 
 .navbar-title {
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  margin-right: 0.5rem;
-  font-size: 1.25rem;
+  font-size: 0.8rem;
   text-decoration: none;
 }
 
@@ -40,7 +35,8 @@ p {
 }
 
 .nav-item {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  margin-top: 1rem;
 }
 
 .foot-item {

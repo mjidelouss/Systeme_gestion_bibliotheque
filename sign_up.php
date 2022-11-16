@@ -18,19 +18,13 @@ include 'scripts.php';
     <!-- ================== END core-css ================== -->
   </head>
 <body>
-<section class="vh-100" style="background-color: #f8f1fa;">
+<section class="" style="background-image: url(./assets/img/book3.jpg);">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-xl-10">
-        <div class="card" style="border-radius: 1rem;">
-          <div class="row g-0">
-            <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="./assets/img/signup.png"
-                alt="login form" class="img-fluid" style="border-radius: 1rem 0rem 0 1rem; height: 100%;" />
-            </div>
-            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col col-xl-6 col-lg-8 col-md-10">
+        <div class="card" style="border-radius: 1rem; height: 490px;">
+            <div class="col-md-12 col-lg-12 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
-
               <form class="mx-1 mx-md-4" action="scripts.php" method="POST">
               <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #a2d2ff;"></i>
@@ -39,19 +33,19 @@ include 'scripts.php';
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
   <label class="form-label">Username</label>
-    <input type="text" id="username" name="username" class="form-control" />
+    <input type="text" id="username" name="username" class="form-control" required/>
   </div>
 </div>
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
   <label class="form-label">Email</label>
-    <input type="email" id="email" name="email" class="form-control" />
+    <input type="email" id="email" name="email" class="form-control" required/>
   </div>
 </div>
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
   <label class="form-label">Password</label>
-    <input type="password" id="pasword" name="pasword" class="form-control" />
+    <input type="password" id="pasword" name="pasword" class="form-control" required/>
   </div>
 </div>
 <div class="form-check d-flex justify-content-center mb-5">
@@ -63,8 +57,8 @@ include 'scripts.php';
 <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
   <button type="submit" name="register" class="btn btn-primary btn-lg">Register</button>
 </div>
+<p class="text-center" style="color: #636c78;">Already have an account? <a href="./sign_in.php" style="color: #393f81;">Login here</a></p>
 </form>
-              </div>
             </div>
           </div>
         </div>
