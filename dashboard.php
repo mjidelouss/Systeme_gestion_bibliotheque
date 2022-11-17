@@ -48,7 +48,8 @@ if (!isset($_SESSION['connected'])) {
             </nav>
 <!-- Welcome user Message -->
 <?php
-$sql = "SELECT * FROM adminusers WHERE id = $_SESSION['connected']";
+$userId = $_SESSION['connected'];
+$sql = "SELECT * FROM adminusers WHERE id = $userId";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
 echo '<h1 class="display-5 mb-3 ms-4">Welcom Back ' . $row["username"] . '</h1>';

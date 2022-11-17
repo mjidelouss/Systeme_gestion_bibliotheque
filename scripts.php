@@ -153,7 +153,6 @@ function check_login() {
     global $con;
     $logName = $_POST['log_username'];
     $logPass = $_POST['log_pass'];
-    $userId = $_POST['userId'];
 
     if (!empty($logName) || !empty($logPass))
     {
@@ -165,7 +164,6 @@ function check_login() {
     $res = $con->query($sql);
     $connect = mysqli_fetch_assoc($res);
     $_SESSION['connected'] = $connect['id'];
-    
     $count = mysqli_num_rows($res);
     if($count == 1) {
         header("location: dashboard.php");
