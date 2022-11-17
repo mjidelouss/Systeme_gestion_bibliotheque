@@ -26,7 +26,7 @@ if(isset($_SESSION['connected'])){
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col col-xl-6 col-lg-8 col-md-10">
-        <div class="card" style="border-radius: 1rem; height: 490px;">
+        <div class="card" style="border-radius: 4rem; height: 550px;">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
               <form class="mx-1 mx-md-4" action="scripts.php" method="POST">

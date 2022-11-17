@@ -101,8 +101,22 @@ function regUser() {
     global $con;
     // Declaring user Variables
     $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['pasword'];
+    if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $_POST['email'])) {
+        //regular expression for email validation
+        $email = $_POST['email'];
+    } else {
+        $_SESSION['message'] = "Email Address is invalid!!";
+        header('location: sign_up.php');
+        exit();
+    }
+    if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $_POST['pasword'])) {
+        //regular expression for password validation
+        $password = $_POST['pasword'];
+    } else {
+        $_SESSION['message'] = "Password is invalid!!";
+        header('location: sign_up.php');
+        exit();
+    }
     if (!empty($username) || !empty($email) || !empty($password))
     {
         $checkDoubleUser = "SELECT username FROM adminusers";
@@ -114,15 +128,15 @@ function regUser() {
             {
                 $_SESSION['message'] = "Username Already Exists!!";
                 header('location: sign_up.php');
-                break;
+                exit();
             }
         }
         while ($rowTwo = $resTwo->fetch_assoc()) {
             if ($email == $rowTwo["email"])
             {
                 $_SESSION['message'] = "Email Already Exists!!";
-                header('location: sign_.php');
-                break;
+                header('location: sign_up.php');
+                exit();
             }
         }
         $sql = "INSERT INTO adminusers (username, email, password) values ('$username', '$email', '$password')";
@@ -151,6 +165,7 @@ function check_login() {
     $res = $con->query($sql);
     $connect = mysqli_fetch_assoc($res);
     $_SESSION['connected'] = $connect['id'];
+    
     $count = mysqli_num_rows($res);
     if($count == 1) {
         header("location: dashboard.php");

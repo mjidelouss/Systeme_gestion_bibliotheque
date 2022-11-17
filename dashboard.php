@@ -1,7 +1,7 @@
 <?php
 include 'scripts.php';
-if(!isset($_SESSION['connected'])){
-  header("location: sign_in.php");
+if (!isset($_SESSION['connected'])) {
+    header("location: sign_in.php");
 }
 ?>
 
@@ -38,8 +38,6 @@ if(!isset($_SESSION['connected'])){
                         class="fas fa-power-off me-2 text-danger"></i>Logout</a>
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
@@ -50,10 +48,10 @@ if(!isset($_SESSION['connected'])){
             </nav>
 <!-- Welcome user Message -->
 <?php
-$sql = "SELECT * FROM adminusers";
+$sql = "SELECT * FROM adminusers WHERE id = $_SESSION['connected']";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
-echo '<h1 class="display-5 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
+echo '<h1 class="display-5 mb-3 ms-4">Welcom Back ' . $row["username"] . '</h1>';
 ?>
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
@@ -61,13 +59,13 @@ echo '<h1 class="display-5 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                         <div class="p-1 bg-white d-flex justify-content-around align-items-center rounded">
                             <div>
                             <?php
-                global $con;
-                $sql = "SELECT COUNT(*) FROM livre";
-                $res = $con->query($sql);
-                $row = $res->fetch_assoc();
-                $bookCount = $row['COUNT(*)'];
-                echo '<h3 class="fs-2">'.$bookCount.'</h3>';
-                ?>
+global $con;
+$sql = "SELECT COUNT(*) FROM livre";
+$res = $con->query($sql);
+$row = $res->fetch_assoc();
+$bookCount = $row['COUNT(*)'];
+echo '<h3 class="fs-2">' . $bookCount . '</h3>';
+?>
                                 <p class="fs-5">Total Books</p>
                             </div>
                             <i class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -77,13 +75,13 @@ echo '<h1 class="display-5 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                         <div class="p-1 bg-white d-flex justify-content-around align-items-center rounded">
                             <div>
                             <?php
-                global $con;
-                $sql = "SELECT COUNT(*) FROM adminusers";
-                $res = $con->query($sql);
-                $row = $res->fetch_assoc();
-                $userCount = $row['COUNT(*)'];
-                echo '<h3 class="fs-2">'.$userCount.'</h3>';
-                ?>
+global $con;
+$sql = "SELECT COUNT(*) FROM adminusers";
+$res = $con->query($sql);
+$row = $res->fetch_assoc();
+$userCount = $row['COUNT(*)'];
+echo '<h3 class="fs-2">' . $userCount . '</h3>';
+?>
                                 <p class="fs-5">Total Users</p>
                             </div>
                             <i
@@ -110,26 +108,26 @@ echo '<h1 class="display-5 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                             </thead>
                             <tbody id="book-table">
                               <?php
-                              getBooks();
-                              while ($row = $res->fetch_assoc()) {
-                                echo '
+getBooks();
+while ($row = $res->fetch_assoc()) {
+    echo '
                                 <tr>
-                                    <th scope="row">'.$row["id"].'</th>
-                                    <td>'.$row["Titre"].'</td>
-                                    <td>'.$row["Auteur"].'</td>
-                                    <td>'.$row["Categoryy"].'</td>
-                                    <td>'.$row["Quantite"].'</td>
-                                    <td>'.$row["ISBN"].'</td>
-                                    <td>'.$row["Date_de_publication"].'</td>
-                                    <td><button data-info="'.$row["Titre"].','.$row["Auteur"].','.$row["Categoryy"].','.$row["Quantite"].','.$row["ISBN"].','.$row["Date_de_publication"].'" class="rounded" 
-                                    data-bs-toggle="modal" data-bs-target="#modal-updelBook" id="'.$row["id"].'" onclick="initializeBook('.$row["id"].')"><i class="bi bi-pencil-square" style="color: green;"></i></button></td>
+                                    <th scope="row">' . $row["id"] . '</th>
+                                    <td>' . $row["Titre"] . '</td>
+                                    <td>' . $row["Auteur"] . '</td>
+                                    <td>' . $row["Categoryy"] . '</td>
+                                    <td>' . $row["Quantite"] . '</td>
+                                    <td>' . $row["ISBN"] . '</td>
+                                    <td>' . $row["Date_de_publication"] . '</td>
+                                    <td><button data-info="' . $row["Titre"] . ',' . $row["Auteur"] . ',' . $row["Categoryy"] . ',' . $row["Quantite"] . ',' . $row["ISBN"] . ',' . $row["Date_de_publication"] . '" class="rounded"
+                                    data-bs-toggle="modal" data-bs-target="#modal-updelBook" id="' . $row["id"] . '" onclick="initializeBook(' . $row["id"] . ')"><i class="bi bi-pencil-square" style="color: green;"></i></button></td>
                                     <form action="scripts.php" method="get">
-                                    <td><button type="submit" class="rounded"><a href="scripts.php?deleteid='.$row["id"].'"><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
+                                    <td><button type="submit" class="rounded"><a href="scripts.php?deleteid=' . $row["id"] . '"><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
                                     </form>
                                     </tr>
                                 ';
-                            }
-                              ?>
+}
+?>
                             </tbody>
                         </table>
                     </div>
@@ -159,14 +157,14 @@ $row = $res->fetch_assoc();
           </div>
           <div class="modal-body">
           <div class="" id="">
-          <input type="text" id="profileId" name="profileId" value="<?= $row['id']; ?>" style="display: none">
+          <input type="text" id="profileId" name="profileId" value="<?=$row['id'];?>" style="display: none">
               <label class="col-form-label text-black">Username</label>
               <input
                 type="text"
                 class="form-control"
                 id="userName"
                 name="userName"
-                value="<?= $row['username']; ?>"
+                value="<?=$row['username'];?>"
               />
             </div>
             <div class="" id="">
@@ -176,7 +174,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="email"
                 name="email"
-                value="<?= $row['email']; ?>"
+                value="<?=$row['email'];?>"
               />
             </div>
             <div class="" id="">
@@ -186,7 +184,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="fullName"
                 name="fullName"
-                value="<?= $row['full_name']; ?>"
+                value="<?=$row['full_name'];?>"
               />
             </div>
             <div class="">
@@ -196,7 +194,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="birthDate"
                 name="birthDate"
-                value="<?= $row['Date_de_naissance']; ?>"
+                value="<?=$row['Date_de_naissance'];?>"
               />
             </div>
             <div class="" id="">
