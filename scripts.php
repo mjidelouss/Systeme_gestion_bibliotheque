@@ -99,7 +99,7 @@ function deleteBook()
 //
 function regUser() {
     global $con;
-    // Declaring user Variables
+
     $username = $_POST['username'];
     if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $_POST['email'])) {
         //regular expression for email validation
@@ -117,33 +117,27 @@ function regUser() {
         header('location: sign_up.php');
         exit();
     }
-    if (!empty($username) || !empty($email) || !empty($password))
-    {
-        $checkDoubleUser = "SELECT username FROM adminusers";
-        $checkDoubleMail = "SELECT email FROM adminusers";
-        $res = $con->query($checkDoubleUser);
-        $resTwo = $con->query($checkDoubleMail);
-        while ($row = $res->fetch_assoc()) {
-            if ($username == $row["username"])
-            {
-                $_SESSION['message'] = "Username Already Exists!!";
-                header('location: sign_up.php');
-                exit();
-            }
+    $checkDoubleUser = "SELECT username FROM adminusers";
+    $checkDoubleMail = "SELECT email FROM adminusers";
+    $res = $con->query($checkDoubleUser);
+    $resTwo = $con->query($checkDoubleMail);
+    while ($row = $res->fetch_assoc()) {
+        if ($username == $row["username"])
+        {
+            $_SESSION['message'] = "Username Already Exists!!";
+            header('location: sign_up.php');
+            exit();
         }
-        while ($rowTwo = $resTwo->fetch_assoc()) {
-            if ($email == $rowTwo["email"])
-            {
-                $_SESSION['message'] = "Email Already Exists!!";
-                header('location: sign_up.php');
-                exit();
-            }
-        }
-        $sql = "INSERT INTO adminusers (username, email, password) values ('$username', '$email', '$password')";
-    } else {
-        echo "ALL Fields Are Required";
-        die();
     }
+    while ($rowTwo = $resTwo->fetch_assoc()) {
+        if ($email == $rowTwo["email"])
+        {
+            $_SESSION['message'] = "Email Already Exists!!";
+            header('location: sign_up.php');
+            exit();
+        }
+    }
+    $sql = "INSERT INTO adminusers (username, email, password) values ('$username', '$email', '$password')";
     $con->query($sql);
     header('location: sign_in.php');
 }
@@ -177,11 +171,24 @@ function updateProfile() {
     global $con;
     $id = $_POST['profileId'];
     $userName = $_POST['userName'];
-    $newPass = $_POST['newPass'];
+    $oldPass = $_POST['oldPass'];
     $fullName = $_POST['fullName'];
     $birthDate = $_POST['birthDate'];
     $email = $_POST['email'];
-    $sql = "UPDATE adminusers SET id = $id, username = '$userName', email = '$email', password = '$newPass', full_name = '$fullName', Date_de_naissance = '$birthDate' WHERE id = $id";
+    $newPass = $_POST['newPass'];
+    $checkpass = "SELECT password FROM adminusers WHERE id=$id";
+    $res = $con->query($checkpass);
+    $row = $res->fetch_assoc();
+    if ($row["password"] != $oldPass) {
+        $_SESSION['message'] = "Password is Incorrect!!";
+        header('location: dashboard.php');
+        echo "<script> $('#modal-profile').modal('show'); </script>"; 
+        exit();
+    }
+    if (!empty($newPass)) {
+        $oldPass = $newPass;
+    }
+    $sql = "UPDATE adminusers SET id = $id, username = '$userName', email = '$email', password = '$oldPass', full_name = '$fullName', Date_de_naissance = '$birthDate' WHERE id = $id";
     $con->query($sql);
     header('location: dashboard.php');
 }

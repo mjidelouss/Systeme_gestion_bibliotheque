@@ -149,15 +149,22 @@ $row = $res->fetch_assoc();
         <div class="modal-content">
         <form action="scripts.php" method="POST">
           <div
-            class="modal-header"
+            class="modal-header d-flex justify-content-center"
             style="
               border: none;
             "
           >
-            <h5 class="modal-title text-primary fs-3" style="margin-left: 12rem;">Profile</h5>
+            <img src="./assets/img/user.png" width="110" height="105" alt="">
           </div>
           <div class="modal-body">
           <div class="" id="">
+          <?php 
+          if (isset($_SESSION['message'])){
+          echo '<div class="alert alert-danger" role="alert">';
+          echo $_SESSION['message'];
+          unset($_SESSION['message']);
+          echo '</div>';
+          }?>
           <input type="text" id="profileId" name="profileId" value="<?=$row['id'];?>" style="display: none">
               <label class="col-form-label text-black">Username</label>
               <input
@@ -199,13 +206,22 @@ $row = $res->fetch_assoc();
               />
             </div>
             <div class="" id="">
+              <label class="col-form-label text-black">Old Password</label>
+              <input
+              type="password"
+                class="form-control"
+                id="oldPass"
+                name="oldPass"
+                required
+              />
+            </div>
+            <div class="" id="">
               <label class="col-form-label text-black">New Password</label>
               <input
               type="password"
                 class="form-control"
                 id="newPass"
                 name="newPass"
-                required
               />
             </div>
           </div>
@@ -240,12 +256,12 @@ $row = $res->fetch_assoc();
         <div class="modal-content">
         <form action="scripts.php" method="POST" id="form-book">
           <div
-            class="modal-header"
+            class="modal-header d-flex justify-content-center"
             style="
               border: none;
             "
           >
-            <h5 class="modal-title text-primary fs-3" style="margin-left: 11rem;">ADD BOOK</h5>
+          <img src="./assets/img/livre.png" width="145" height="100" alt="">
           </div>
           <div class="modal-body">
           <div class="" id="">
@@ -350,12 +366,12 @@ $row = $res->fetch_assoc();
         <div class="modal-content">
         <form action="scripts.php" method="POST" id="">
           <div
-            class="modal-header"
+            class="modal-header d-flex justify-content-center"
             style="
               border: none;
             "
           >
-            <h5 class="modal-title text-primary fs-3" style="margin-left: 11rem;">Update Book</h5>
+          <img src="./assets/img/editlivre.png" width="150" height="100" alt="">
           </div>
           <div class="modal-body">
           <div class="" id="">
