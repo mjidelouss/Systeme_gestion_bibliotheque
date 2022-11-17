@@ -105,6 +105,26 @@ function regUser() {
     $password = $_POST['pasword'];
     if (!empty($username) || !empty($email) || !empty($password))
     {
+        $checkDoubleUser = "SELECT username FROM adminusers";
+        $checkDoubleMail = "SELECT email FROM adminusers";
+        $res = $con->query($checkDoubleUser);
+        $resTwo = $con->query($checkDoubleMail);
+        while ($row = $res->fetch_assoc()) {
+            if ($username == $row["username"])
+            {
+                $_SESSION['message'] = "Username Already Exists!!";
+                header('location: sign_up.php');
+                break;
+            }
+        }
+        while ($rowTwo = $resTwo->fetch_assoc()) {
+            if ($email == $rowTwo["email"])
+            {
+                $_SESSION['message'] = "Email Already Exists!!";
+                header('location: sign_.php');
+                break;
+            }
+        }
         $sql = "INSERT INTO adminusers (username, email, password) values ('$username', '$email', '$password')";
     } else {
         echo "ALL Fields Are Required";
@@ -119,6 +139,7 @@ function check_login() {
     global $con;
     $logName = $_POST['log_username'];
     $logPass = $_POST['log_pass'];
+    $userId = $_POST['userId'];
 
     if (!empty($logName) || !empty($logPass))
     {
@@ -128,11 +149,14 @@ function check_login() {
         die();
     }
     $res = $con->query($sql);
+    $connect = mysqli_fetch_assoc($res);
+    $_SESSION['connected'] = $connect['id'];
     $count = mysqli_num_rows($res);
     if($count == 1) {
         header("location: dashboard.php");
      }else {
-        echo "Wrong Credentials !!";
+        $_SESSION['message'] = "Wrong Credentials!!";
+        header('location: sign_in.php');
      }
 }
 

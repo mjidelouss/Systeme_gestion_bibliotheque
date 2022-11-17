@@ -1,5 +1,8 @@
 <?php
 include 'scripts.php';
+if(!isset($_SESSION['connected'])){
+  header("location: sign_in.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,12 +10,13 @@ include 'scripts.php';
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content=""/>
         <meta name="author" content="" />
         <title>Admin | Dashboard</title>
     <!-- ================== BEGIN core-css ================== -->
-    <link href="assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
     <link href="./dash_style.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
@@ -21,16 +25,16 @@ include 'scripts.php';
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading ms-3 py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class=""></i>YouCode</div>
+            <div class="sidebar-heading ms-2 py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
+                    class=""></i>YouCode Library</div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" onclick="resetBookForm()" data-bs-toggle="modal" data-bs-target="#modal-book"><i
-                        class="fas fa-add me-2"></i>Add Book</a>
+                        class="fa fa-plus me-2"></i>Add Book</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold" data-bs-toggle="modal" data-bs-target="#modal-profile"><i
                         class="fas fa-user me-2"></i>Profile</a>
-                <a href="./index.html" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-danger"><i
+                <a href="./logout.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold text-danger"><i
                         class="fas fa-power-off me-2 text-danger"></i>Logout</a>
             </div>
         </div>
@@ -42,19 +46,19 @@ include 'scripts.php';
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left primary-text fs-4 me-3" style="color: black" onclick="wrapside()" id="controlPanel"></i>
                     <h2 class="fs-2 m-0">Dashboard</h2>
-                </div>   
+                </div>
             </nav>
 <!-- Welcome user Message -->
 <?php
 $sql = "SELECT * FROM adminusers";
 $res = $con->query($sql);
 $row = $res->fetch_assoc();
-echo '<h1 class="display-1 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
+echo '<h1 class="display-5 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
 ?>
             <div class="container-fluid px-4">
                 <div class="row g-3 my-2">
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="p-1 bg-white d-flex justify-content-around align-items-center rounded">
                             <div>
                             <?php
                 global $con;
@@ -69,9 +73,8 @@ echo '<h1 class="display-1 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                             <i class="fas fa-book fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
-
-                    <div class="col-md-3">
-                        <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="p-1 bg-white d-flex justify-content-around align-items-center rounded">
                             <div>
                             <?php
                 global $con;
@@ -88,20 +91,21 @@ echo '<h1 class="display-1 mb-3 ms-4">Welcom Back '.$row["username"].'</h1>';
                         </div>
                     </div>
                 </div>
-
                 <div class="row my-5">
                     <h3 class="fs-4 mb-3">Available Books</h3>
-                    <div class="col">
-                        <table class="table bg-white rounded shadow-sm  table-hover">
+                    <div class="col table-responsive">
+                        <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="50">Id</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Auteur</th>
+                                    <th scope="col" width="50"># Id</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Author</th>
                                     <th scope="col">Category</th>
-                                    <th scope="col">Quantite</th>
+                                    <th scope="col">Quantity</th>
                                     <th scope="col">ISBN</th>
-                                    <th scope="col">Date de Publication</th>
+                                    <th scope="col">Release Date</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
                                 </tr>
                             </thead>
                             <tbody id="book-table">
@@ -202,6 +206,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="newPass"
                 name="newPass"
+                required
               />
             </div>
           </div>
@@ -251,6 +256,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="title"
                 name="title"
+                required
               />
             </div>
             <div class="" id="">
@@ -260,6 +266,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="author"
                 name="author"
+                required
               />
             </div>
             <div class="" id="">
@@ -269,6 +276,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="quantite"
                 name="quantite"
+                required
               />
             </div>
             <div class="" id="">
@@ -278,6 +286,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="isbn"
                 name="isbn"
+                required
               />
             </div>
             <div class="">
@@ -286,6 +295,7 @@ $row = $res->fetch_assoc();
                 class="form-select"
                 id="category"
                 name="category"
+                required
               >
                 <option disabled selected>Please select</option>
                 <option value="1">Action</option>
@@ -305,6 +315,7 @@ $row = $res->fetch_assoc();
                 class="form-control"
                 id="pubDate"
                 name="pubDate"
+                required
               />
             </div>
           </div>
@@ -439,8 +450,7 @@ $row = $res->fetch_assoc();
     </div>
 </body>
     <!-- ================== BEGIN core-js ================== -->
-    <script src="./assets/js/vendor.min.js"></script>
-    <script src="./assets/js/app.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
     <!-- ================== END core-js ================== -->
 </html>

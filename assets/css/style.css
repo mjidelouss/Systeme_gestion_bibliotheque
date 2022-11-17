@@ -1,3 +1,12 @@
+#landing-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#landing-section {
+  margin: auto;
+}
 .mainhead {
   background-color: #f8f9fa;
   padding-top: 9.5rem;
@@ -18,11 +27,10 @@ p {
   font-family: "Mulish";
 }
 
-.youcode-img {
+.landing-img {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 
 .navbar-title {

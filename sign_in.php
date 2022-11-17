@@ -1,5 +1,8 @@
 <?php
 include 'scripts.php';
+if(isset($_SESSION['connected'])){
+  header("location: dashboard.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +14,9 @@ include 'scripts.php';
         <meta name="author" content="" />
         <title>Sign in</title>
     <!-- ================== BEGIN core-css ================== -->
-    <link href="assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
@@ -32,6 +36,14 @@ include 'scripts.php';
                   </div>
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                   <div class="form-outline mb-4">
+                  <input type="text" id="userId" name="userId" style="display: none">
+                  <?php 
+                  if (isset($_SESSION['message'])){
+                  echo '<div class="alert alert-danger" role="alert">';
+                  echo $_SESSION['message'];
+                  unset($_SESSION['message']);
+                  echo '</div>';
+                  }?>
                   <label class="form-label">Username</label>
                     <input type="text" id="log_username" name="log_username" class="form-control form-control-lg" required/>
                   </div>

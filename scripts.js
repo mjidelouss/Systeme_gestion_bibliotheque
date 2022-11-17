@@ -29,14 +29,14 @@ function wrapside() {
   side.classList.toggle("toggled");
 }
 
-function validate() {
-  var mail = document.getElementById("").value;
-  var regx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+// function validate() {
+//   var mail = document.getElementById("").value;
+//   var regx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-  if (regx.text(mail)) {
+//   if (regx.text(mail)) {
 
-  }
-  else {
+//   }
+//   else {
     
-  }
-}
+//   }
+// }
