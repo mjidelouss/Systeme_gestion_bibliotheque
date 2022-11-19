@@ -1,4 +1,4 @@
- // Update & delete model variables
+// Update & delete model variables
 const updateTitle = document.getElementById("newTitle");
 const updateAuthor = document.getElementById("newAuthor");
 const updateQuantity = document.getElementById("newQuantite");
@@ -9,7 +9,7 @@ const bookId = document.getElementById("bookId");
 
 function initializeBook(index) {
   let dataInfo = document.getElementById(index).getAttribute("data-info");
-  let arr = dataInfo.split(',')
+  let arr = dataInfo.split(",");
   updateTitle.value = arr[0];
   updateAuthor.value = arr[1];
   updateCategory.value = arr[2];
@@ -19,10 +19,10 @@ function initializeBook(index) {
   bookId.value = index;
 }
 
- // resetBookForm Function resets the forms inputs
- function resetBookForm(){
-    document.getElementById("form-book").reset();
-  }
+// resetBookForm Function resets the forms inputs
+function resetBookForm() {
+  document.getElementById("form-book").reset();
+}
 
 function wrapside() {
   let side = document.querySelector("#wrapper");

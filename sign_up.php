@@ -1,7 +1,7 @@
 <?php
 include 'scripts.php';
-if(isset($_SESSION['connected'])){
-  header("location: dashboard.php");
+if (isset($_SESSION['connected'])) {
+    header("location: dashboard.php");
 }
 ?>
 
@@ -36,13 +36,13 @@ if(isset($_SESSION['connected'])){
                   </div>
 <div class="d-flex flex-row align-items-center mb-4">
   <div class="form-outline flex-fill mb-0">
-  <?php 
-  if (isset($_SESSION['message'])){
-  echo '<div class="alert alert-danger" role="alert">';
-  echo $_SESSION['message'];
-  unset($_SESSION['message']);
-  echo '</div>';
-  }?>
+  <?php
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-danger" role="alert">';
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+    echo '</div>';
+}?>
   <label class="form-label">Username</label>
     <input type="text" id="username" name="username" class="form-control" required/>
   </div>

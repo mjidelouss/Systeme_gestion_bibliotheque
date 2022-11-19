@@ -50,8 +50,7 @@ function saveBook()
     $quantite = $_POST['quantite'];
     $isbn = $_POST['isbn'];
     $datePub = $_POST['pubDate'];
-    if (!empty($titre) || !empty($auteur) || !empty($category) || !empty($quantite) || !empty($isbn) || !empty($datePub))
-    {
+    if (!empty($titre) || !empty($auteur) || !empty($category) || !empty($quantite) || !empty($isbn) || !empty($datePub)) {
         $sql = "INSERT INTO livre (Titre, Auteur, Quantite, category_id, ISBN, Date_de_publication) values ('$titre', '$auteur', '$quantite', '$category', '$isbn', '$datePub')";
     } else {
         echo "ALL Fields Are Required";
@@ -59,6 +58,7 @@ function saveBook()
     }
     $con->query($sql);
     header('location: dashboard.php');
+    $_SESSION['crud'] = "Book Added Successfully!!";
 }
 
 // updateBook Function updates a books data inside the database table
@@ -73,17 +73,18 @@ function updateBook()
     $isbn = $_POST['newIsbn'];
     $datePub = $_POST['newPubDate'];
     $categoryId = '';
-    if ($category == "Action"){$categoryId = 1;}
-    if ($category == "Adventure"){$categoryId = 2;}
-    if ($category == "Science Fiction"){$categoryId = 3;}
-    if ($category == "Biography"){$categoryId = 4;}
-    if ($category == "Sport"){$categoryId = 5;}
-    if ($category == "Programing"){$categoryId = 6;}
-    if ($category == "Mathematique"){$categoryId = 7;}
-    if ($category == "Philosophy"){$categoryId = 8;}
+    if ($category == "Action") {$categoryId = 1;}
+    if ($category == "Adventure") {$categoryId = 2;}
+    if ($category == "Science Fiction") {$categoryId = 3;}
+    if ($category == "Biography") {$categoryId = 4;}
+    if ($category == "Sport") {$categoryId = 5;}
+    if ($category == "Programing") {$categoryId = 6;}
+    if ($category == "Mathematique") {$categoryId = 7;}
+    if ($category == "Philosophy") {$categoryId = 8;}
     $sql = "UPDATE livre SET id = $id, Titre = '$titre', Auteur = '$auteur', Quantite = '$quantite', category_id = '$categoryId', ISBN = '$isbn', Date_de_publication = '$datePub' WHERE id = $id";
     $con->query($sql);
     header('location: dashboard.php');
+    $_SESSION['crud'] = "Book Updated Successfully!!";
 }
 
 // deleteBook function deletes a book from the database table
@@ -94,10 +95,12 @@ function deleteBook()
     $sql = "DELETE FROM livre WHERE id = $id";
     $con->query($sql);
     header('location: dashboard.php');
+    $_SESSION['crud'] = "Book Deleted Successfully!!";
 }
 
 //
-function regUser() {
+function regUser()
+{
     global $con;
 
     $username = $_POST['username'];
@@ -109,7 +112,7 @@ function regUser() {
         header('location: sign_up.php');
         exit();
     }
-    if(preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $_POST['pasword'])) {
+    if (preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/", $_POST['pasword'])) {
         //regular expression for password validation
         $password = $_POST['pasword'];
     } else {
@@ -122,16 +125,14 @@ function regUser() {
     $res = $con->query($checkDoubleUser);
     $resTwo = $con->query($checkDoubleMail);
     while ($row = $res->fetch_assoc()) {
-        if ($username == $row["username"])
-        {
+        if ($username == $row["username"]) {
             $_SESSION['message'] = "Username Already Exists!!";
             header('location: sign_up.php');
             exit();
         }
     }
     while ($rowTwo = $resTwo->fetch_assoc()) {
-        if ($email == $rowTwo["email"])
-        {
+        if ($email == $rowTwo["email"]) {
             $_SESSION['message'] = "Email Already Exists!!";
             header('location: sign_up.php');
             exit();
@@ -142,14 +143,14 @@ function regUser() {
     header('location: sign_in.php');
 }
 
-// 
-function check_login() {
+//
+function check_login()
+{
     global $con;
     $logName = $_POST['log_username'];
     $logPass = $_POST['log_pass'];
 
-    if (!empty($logName) || !empty($logPass))
-    {
+    if (!empty($logName) || !empty($logPass)) {
         $sql = "SELECT id FROM adminusers WHERE username = '$logName' and password = '$logPass'";
     } else {
         echo "ALL Fields Are Required";
@@ -159,15 +160,16 @@ function check_login() {
     $connect = mysqli_fetch_assoc($res);
     $_SESSION['connected'] = $connect['id'];
     $count = mysqli_num_rows($res);
-    if($count == 1) {
+    if ($count == 1) {
         header("location: dashboard.php");
-     }else {
+    } else {
         $_SESSION['message'] = "Wrong Credentials!!";
         header('location: sign_in.php');
-     }
+    }
 }
 
-function updateProfile() {
+function updateProfile()
+{
     global $con;
     $id = $_POST['profileId'];
     $userName = $_POST['userName'];
@@ -180,9 +182,8 @@ function updateProfile() {
     $res = $con->query($checkpass);
     $row = $res->fetch_assoc();
     if ($row["password"] != $oldPass) {
-        $_SESSION['message'] = "Password is Incorrect!!";
+        $_SESSION['message'] = "Failed to update Profile due to Incorrect Password!!";
         header('location: dashboard.php');
-        echo "<script> $('#modal-profile').modal('show'); </script>"; 
         exit();
     }
     if (!empty($newPass)) {
@@ -191,4 +192,5 @@ function updateProfile() {
     $sql = "UPDATE adminusers SET id = $id, username = '$userName', email = '$email', password = '$oldPass', full_name = '$fullName', Date_de_naissance = '$birthDate' WHERE id = $id";
     $con->query($sql);
     header('location: dashboard.php');
+    $_SESSION['crud'] = "Profile Updated Successfully!!";
 }

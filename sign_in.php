@@ -1,7 +1,7 @@
 <?php
 include 'scripts.php';
-if(isset($_SESSION['connected'])){
-  header("location: dashboard.php");
+if (isset($_SESSION['connected'])) {
+    header("location: dashboard.php");
 }
 ?>
 
@@ -37,13 +37,13 @@ if(isset($_SESSION['connected'])){
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
                   <div class="form-outline mb-4">
                   <input type="text" id="userId" name="userId" style="display: none">
-                  <?php 
-                  if (isset($_SESSION['message'])){
-                  echo '<div class="alert alert-danger" role="alert">';
-                  echo $_SESSION['message'];
-                  unset($_SESSION['message']);
-                  echo '</div>';
-                  }?>
+                  <?php
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-danger" role="alert">';
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+    echo '</div>';
+}?>
                   <label class="form-label">Username</label>
                     <input type="text" id="log_username" name="log_username" class="form-control form-control-lg" required/>
                   </div>

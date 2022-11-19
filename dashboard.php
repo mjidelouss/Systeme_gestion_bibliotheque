@@ -40,9 +40,23 @@ if (!isset($_SESSION['connected'])) {
         </div>
         <!-- Page Content -->
         <div id="page-content-wrapper">
+        <?php
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-danger" role="alert">';
+    echo $_SESSION['message'];
+    unset($_SESSION['message']);
+    echo '</div>';
+}?>
+<?php
+if (isset($_SESSION['crud'])) {
+    echo '<div class="alert alert-success" role="alert">';
+    echo $_SESSION['crud'];
+    unset($_SESSION['crud']);
+    echo '</div>';
+}?>
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" style="color: black" onclick="wrapside()" id="controlPanel"></i>
+                    <i class="fas fa-align-left primary-text fs-4 me-3" style="color: black; cursor: pointer;" onclick="wrapside()" id="controlPanel"></i>
                     <h2 class="fs-2 m-0">Dashboard</h2>
                 </div>
             </nav>
@@ -158,13 +172,6 @@ $row = $res->fetch_assoc();
           </div>
           <div class="modal-body">
           <div class="" id="">
-          <?php 
-          if (isset($_SESSION['message'])){
-          echo '<div class="alert alert-danger" role="alert">';
-          echo $_SESSION['message'];
-          unset($_SESSION['message']);
-          echo '</div>';
-          }?>
           <input type="text" id="profileId" name="profileId" value="<?=$row['id'];?>" style="display: none">
               <label class="col-form-label text-black">Username</label>
               <input
@@ -467,5 +474,6 @@ $row = $res->fetch_assoc();
     <!-- ================== BEGIN core-js ================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- ================== END core-js ================== -->
 </html>
