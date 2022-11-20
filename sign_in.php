@@ -39,10 +39,11 @@ if (isset($_SESSION['connected'])) {
                   <input type="text" id="userId" name="userId" style="display: none">
                   <?php
 if (isset($_SESSION['message'])) {
-    echo '<div class="alert alert-danger" role="alert">';
-    echo $_SESSION['message'];
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$_SESSION['message'].'</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
     unset($_SESSION['message']);
-    echo '</div>';
 }?>
                   <label class="form-label">Username</label>
                     <input type="text" id="log_username" name="log_username" class="form-control form-control-lg" required/>

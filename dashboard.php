@@ -42,17 +42,19 @@ if (!isset($_SESSION['connected'])) {
         <div id="page-content-wrapper">
         <?php
 if (isset($_SESSION['message'])) {
-    echo '<div class="alert alert-danger" role="alert">';
-    echo $_SESSION['message'];
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>'.$_SESSION['message'].'</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
     unset($_SESSION['message']);
-    echo '</div>';
 }?>
 <?php
 if (isset($_SESSION['crud'])) {
-    echo '<div class="alert alert-success" role="alert">';
-    echo $_SESSION['crud'];
+  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>'.$_SESSION['crud'].'</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
     unset($_SESSION['crud']);
-    echo '</div>';
 }?>
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">

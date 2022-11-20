@@ -38,10 +38,11 @@ if (isset($_SESSION['connected'])) {
   <div class="form-outline flex-fill mb-0">
   <?php
 if (isset($_SESSION['message'])) {
-    echo '<div class="alert alert-danger" role="alert">';
-    echo $_SESSION['message'];
+  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>'.$_SESSION['message'].'</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
     unset($_SESSION['message']);
-    echo '</div>';
 }?>
   <label class="form-label">Username</label>
     <input type="text" id="username" name="username" class="form-control" required/>
