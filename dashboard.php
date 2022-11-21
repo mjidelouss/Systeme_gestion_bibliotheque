@@ -162,7 +162,7 @@ $row = $res->fetch_assoc();
 ?>
     <div class="modal fade" id="modal-profile">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-image: url(./assets/img/book1.jpg);">
         <form action="scripts.php" method="POST">
           <div
             class="modal-header d-flex justify-content-center"
@@ -262,7 +262,7 @@ $row = $res->fetch_assoc();
 <!-- BOOK MODAL -->
 <div class="modal fade" id="modal-book">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-image: url(./assets/img/book.jpg);">
         <form action="scripts.php" method="POST" id="form-book">
           <div
             class="modal-header d-flex justify-content-center"
@@ -372,7 +372,7 @@ $row = $res->fetch_assoc();
 <!-- UPDATE & DELETE BOOK MODAL -->
 <div class="modal fade" id="modal-updelBook">
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-image: url(./assets/img/book.jpg);">
         <form action="scripts.php" method="POST" id="">
           <div
             class="modal-header d-flex justify-content-center"
@@ -476,6 +476,5 @@ $row = $res->fetch_assoc();
     <!-- ================== BEGIN core-js ================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- ================== END core-js ================== -->
 </html>

@@ -21,12 +21,12 @@ if (isset($_SESSION['connected'])) {
     <link href="assets/css/style.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
   </head>
-<body>
-<section class="" style="background-image: url(./assets/img/book3.jpg);">
+<body style="background-image: url(./assets/img/book3.jpg);">
+<section class="">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col col-xl-6 col-lg-8 col-md-10">
-        <div class="card" style="border-radius: 4rem; height: 550px;">
+        <div class="card" style="border-radius: 4rem; height: 565px;">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
               <form class="mx-1 mx-md-4" action="scripts.php" method="POST">
@@ -80,6 +80,7 @@ if (isset($_SESSION['message'])) {
 </section>
 </body>
     <!-- ================== BEGIN core-js ================== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="scripts.js"></script>
     <!-- ================== END core-js ================== -->
 </html>

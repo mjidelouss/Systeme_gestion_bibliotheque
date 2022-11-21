@@ -116,7 +116,7 @@ function regUser()
         //regular expression for password validation
         $password = $_POST['pasword'];
     } else {
-        $_SESSION['message'] = "Password is invalid!!";
+        $_SESSION['message'] = "Password must be at least 8 characters long contains 1 uppercase, 1 lowercase, 1 number and 1 special character!!";
         header('location: sign_up.php');
         exit();
     }
