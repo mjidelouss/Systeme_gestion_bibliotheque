@@ -35,7 +35,7 @@ function getBooks()
     global $con;
     global $res;
     $query = "SELECT livre.id, livre.Titre, livre.Auteur, livre.Quantite, category.Category AS Categoryy , livre.ISBN,
-    livre.Date_de_publication FROM  livre  INNER JOIN Category  ON category.id = livre.category_id";
+    livre.Date_de_publication FROM  livre, Category WHERE category.id = livre.category_id";
     $res = $con->query($query);
 }
 
@@ -50,12 +50,26 @@ function saveBook()
     $quantite = $_POST['quantite'];
     $isbn = $_POST['isbn'];
     $datePub = $_POST['pubDate'];
-    if (!empty($titre) || !empty($auteur) || !empty($category) || !empty($quantite) || !empty($isbn) || !empty($datePub)) {
-        $sql = "INSERT INTO livre (Titre, Auteur, Quantite, category_id, ISBN, Date_de_publication) values ('$titre', '$auteur', '$quantite', '$category', '$isbn', '$datePub')";
-    } else {
-        echo "ALL Fields Are Required";
-        die();
+
+    $checkDoubleName = "SELECT Titre FROM livre";
+    $checkDoubleIsbn = "SELECT ISBN FROM livre";
+    $result = $con->query($checkDoubleName);
+    $resultTwo = $con->query($checkDoubleIsbn);
+    while ($row = $result->fetch_assoc()) {
+        if ($titre == $row["Titre"]) {
+            $_SESSION['message'] = "Failed to add Book: Book Name Already Exists!!";
+            header('location: dashboard.php');
+            exit();
+        }
     }
+    while ($rowTwo = $resultTwo->fetch_assoc()) {
+        if ($isbn == $rowTwo["ISBN"]) {
+            $_SESSION['message'] = "Failed to add Book: Book ISBN Already Exists!!";
+            header('location: dashboard.php');
+            exit();
+        }
+    }
+    $sql = "INSERT INTO livre (Titre, Auteur, Quantite, category_id, ISBN, Date_de_publication) values ('$titre', '$auteur', '$quantite', '$category', '$isbn', '$datePub')";
     $con->query($sql);
     header('location: dashboard.php');
     $_SESSION['crud'] = "Book Added Successfully!!";
@@ -73,6 +87,7 @@ function updateBook()
     $isbn = $_POST['newIsbn'];
     $datePub = $_POST['newPubDate'];
     $categoryId = '';
+    
     if ($category == "Action") {$categoryId = 1;}
     if ($category == "Adventure") {$categoryId = 2;}
     if ($category == "Science Fiction") {$categoryId = 3;}
@@ -150,12 +165,7 @@ function check_login()
     $logName = $_POST['log_username'];
     $logPass = $_POST['log_pass'];
 
-    if (!empty($logName) || !empty($logPass)) {
-        $sql = "SELECT id FROM adminusers WHERE username = '$logName' and password = '$logPass'";
-    } else {
-        echo "ALL Fields Are Required";
-        die();
-    }
+    $sql = "SELECT id FROM adminusers WHERE username = '$logName' and password = '$logPass'";
     $res = $con->query($sql);
     $connect = mysqli_fetch_assoc($res);
     $_SESSION['connected'] = $connect['id'];

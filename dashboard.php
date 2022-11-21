@@ -108,7 +108,7 @@ echo '<h3 class="fs-2">' . $userCount . '</h3>';
                 </div>
                 <div class="row my-5">
                     <h3 class="fs-4 mb-3">Available Books</h3>
-                    <div class="col table-responsive">
+                    <div class="col table-responsive mt-2">
                         <table class="table table-bordered bg-white rounded shadow-sm table-hover">
                             <thead>
                                 <tr>
@@ -153,7 +153,7 @@ while ($row = $res->fetch_assoc()) {
             </div>
         </div>
     </div>
-    </div>
+</div>
     <!-- PROFIL MODAL -->
 <?php
 $sql = "SELECT * FROM adminusers";
@@ -472,6 +472,7 @@ $row = $res->fetch_assoc();
         </div>
       </div>
     </div>
+  
 </body>
     <!-- ================== BEGIN core-js ================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
