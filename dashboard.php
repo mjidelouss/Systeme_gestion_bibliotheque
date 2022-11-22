@@ -26,7 +26,8 @@ if (!isset($_SESSION['connected'])) {
         <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading ms-2 py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i
-                    class=""></i>YouCode Library</div>
+                    class=""></i>YouCode Library
+                </div>
             <div class="list-group list-group-flush my-3">
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
@@ -43,22 +44,22 @@ if (!isset($_SESSION['connected'])) {
         <?php
 if (isset($_SESSION['message'])) {
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>'.$_SESSION['message'].'</strong>
+    <strong>' . $_SESSION['message'] . '</strong>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
     unset($_SESSION['message']);
 }?>
 <?php
 if (isset($_SESSION['crud'])) {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>'.$_SESSION['crud'].'</strong>
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>' . $_SESSION['crud'] . '</strong>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
     unset($_SESSION['crud']);
 }?>
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
-                    <i class="fas fa-align-left primary-text fs-4 me-3" style="color: black; cursor: pointer;" onclick="wrapside()" id="controlPanel"></i>
+                    <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;" id="controlPanel" onclick="wrapside()"></i>
                     <h2 class="fs-2 m-0">Dashboard</h2>
                 </div>
             </nav>
@@ -103,6 +104,23 @@ echo '<h3 class="fs-2">' . $userCount . '</h3>';
                             </div>
                             <i
                                 class="fas fa-users fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="p-1 bg-white d-flex justify-content-around align-items-center rounded">
+                            <div>
+                            <?php
+global $con;
+$sql = "SELECT SUM(Quantite) AS total FROM livre";
+$res = $con->query($sql);
+$row = $res->fetch_assoc();
+$quantityCount = $row['total'];
+echo '<h3 class="fs-2">' . $quantityCount . '</h3>';
+?>
+                                <p class="fs-5">Total Quantity</p>
+                            </div>
+                            <i
+                                class="fas fa-cubes fs-1 primary-text border rounded-full secondary-bg p-3"></i>
                         </div>
                     </div>
                 </div>
@@ -151,9 +169,6 @@ while ($row = $res->fetch_assoc()) {
                 </div>
 
             </div>
-        </div>
-    </div>
-</div>
     <!-- PROFIL MODAL -->
 <?php
 $sql = "SELECT * FROM adminusers";
@@ -356,7 +371,6 @@ $row = $res->fetch_assoc();
             </button>
             <button
               type="submit"
-              id="update"
               class="btn btn-danger rounded-pill text-white"
               name="save"
               id="save"
@@ -472,7 +486,6 @@ $row = $res->fetch_assoc();
         </div>
       </div>
     </div>
-  
 </body>
     <!-- ================== BEGIN core-js ================== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
