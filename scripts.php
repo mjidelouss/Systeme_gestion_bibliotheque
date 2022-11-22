@@ -113,7 +113,7 @@ function deleteBook()
     $_SESSION['crud'] = "Book Deleted Successfully!!";
 }
 
-//
+// regUser function registers the user into the database
 function regUser()
 {
     global $con;
@@ -158,7 +158,7 @@ function regUser()
     header('location: sign_in.php');
 }
 
-//
+// check_login function checks if the user can login or not
 function check_login()
 {
     global $con;
@@ -178,6 +178,7 @@ function check_login()
     }
 }
 
+// updateProfile function updates the users informations
 function updateProfile()
 {
     global $con;

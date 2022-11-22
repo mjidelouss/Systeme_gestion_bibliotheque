@@ -57,7 +57,7 @@ if (isset($_SESSION['crud'])) {
 </div>';
     unset($_SESSION['crud']);
 }?>
-            <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+            <nav class="navbar navbar-expand-lg bg-transparent py-4 px-4">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-bars primary-text fs-4 me-3" style="color: black; cursor: pointer;" id="controlPanel" onclick="wrapside()"></i>
                     <h2 class="fs-2 m-0">Dashboard</h2>

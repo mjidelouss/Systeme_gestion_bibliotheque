@@ -7,6 +7,7 @@ const updateIsbn = document.getElementById("newIsbn");
 const updateDatePub = document.getElementById("newPubDate");
 const bookId = document.getElementById("bookId");
 
+// initializeBook function fills the update book model inputs
 function initializeBook(index) {
   let dataInfo = document.getElementById(index).getAttribute("data-info");
   let arr = dataInfo.split(",");
@@ -23,9 +24,8 @@ function initializeBook(index) {
 function resetBookForm() {
   document.getElementById("form-book").reset();
 }
-
+// wrapside function to control the show & hide of sidebar
 function wrapside() {
   let side = document.querySelector("#wrapper");
-  
   side.classList.toggle("toggled");
 }
