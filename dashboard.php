@@ -166,8 +166,8 @@ if (isset($_POST['search'])) {
     $ress=$con->query($query);
     while ($row=$ress->fetch_assoc())
     {
-      echo '
-      <tr>
+        echo '
+          <tr>
           <th scope="row">' . $row["id"] . '</th>
           <td>' . $row["Titre"] . '</td>
           <td>' . $row["Auteur"] . '</td>
@@ -177,11 +177,12 @@ if (isset($_POST['search'])) {
           <td>' . $row["Date_de_publication"] . '</td>
           <td><button data-info="' . $row["Titre"] . ',' . $row["Auteur"] . ',' . $row["Categoryy"] . ',' . $row["Quantite"] . ',' . $row["ISBN"] . ',' . $row["Date_de_publication"] . '" class="rounded"
           data-bs-toggle="modal" data-bs-target="#modal-updelBook" id="' . $row["id"] . '" onclick="initializeBook(' . $row["id"] . ')"><i class="bi bi-pencil-square" style="color: green;"></i></button></td>
-          <form action="scripts.php" method="get">
-          <td><button type="submit" class="rounded"><a href="scripts.php?deleteid=' . $row["id"] . '"><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
+          <form action="scripts.php" method="POST">
+          <input type="text" id="" name="delid" value="'.$row['id'].'" style="display: none">
+          <td><button type="submit" class="rounded"><a href=""><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
           </form>
           </tr>
-      ';
+          ';
     }
 } else {
 getBooks();
@@ -197,8 +198,9 @@ while ($row = $res->fetch_assoc()) {
           <td>' . $row["Date_de_publication"] . '</td>
           <td><button data-info="' . $row["Titre"] . ',' . $row["Auteur"] . ',' . $row["Categoryy"] . ',' . $row["Quantite"] . ',' . $row["ISBN"] . ',' . $row["Date_de_publication"] . '" class="rounded"
           data-bs-toggle="modal" data-bs-target="#modal-updelBook" id="' . $row["id"] . '" onclick="initializeBook(' . $row["id"] . ')"><i class="bi bi-pencil-square" style="color: green;"></i></button></td>
-          <form action="scripts.php" method="get">
-          <td><button type="submit" class="rounded"><a href="scripts.php?deleteid=' . $row["id"] . '"><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
+          <form action="scripts.php" method="POST">
+          <input type="text" id="" name="delid" value="'.$row['id'].'" style="display: none">
+          <td><button type="submit" class="rounded"><a href=""><i class="bi bi-trash-fill" style="color: red;"></i></a></button></td>
           </form>
           </tr>
           ';

@@ -24,7 +24,7 @@ if (isset($_SESSION['connected'])) {
 <body style="background-image: url(./assets/img/book3.jpg);">
 <section class="">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center">
       <div class="col col-xl-6 col-lg-8 col-md-10">
         <div class="card" style="border-radius: 4rem; height: 565px;">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
@@ -38,8 +38,8 @@ if (isset($_SESSION['connected'])) {
   <div class="form-outline flex-fill mb-0">
   <?php
 if (isset($_SESSION['message'])) {
-  echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>'.$_SESSION['message'].'</strong>
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>' . $_SESSION['message'] . '</strong>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
     unset($_SESSION['message']);

@@ -13,7 +13,7 @@ if (isset($_POST['update'])) {
     updateBook();
 }
 
-if (isset($_GET['deleteid'])) {
+if (isset($_POST['delid'])) {
     deleteBook();
 }
 
@@ -106,9 +106,9 @@ function updateBook()
 function deleteBook()
 {
     global $con;
-    $id = $_GET['deleteid'];
-    $sql = "DELETE FROM livre WHERE id = $id";
-    $con->query($sql);
+    $id = $_POST['delid'];
+    $sqli = "DELETE FROM livre WHERE id = '$id'";
+    $con->query($sqli);
     header('location: dashboard.php');
     $_SESSION['crud'] = "Book Deleted Successfully!!";
 }

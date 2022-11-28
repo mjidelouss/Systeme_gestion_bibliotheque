@@ -24,7 +24,7 @@ if (isset($_SESSION['connected'])) {
 <body style ="background-image: url(./assets/img/book3.jpg);">
 <section class="">
   <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center">
+    <div class="row justify-content-center align-items-center">
       <div class="col col-xl-6 col-lg-8 col-md-10">
         <div class="card" style="border-radius: 4rem; height: 490px;">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
